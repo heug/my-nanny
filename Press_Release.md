@@ -1,46 +1,24 @@
-# FRIEND - First Responsive Interactive Entity Nanny Droid #
-## Your child's home companion and chore manager
+# myNanny #
+## Your Child's Interactive Companion and Household Organizer
 
 ### Summary
 
-Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-FRIEND is your parenting interactive, after-school FRIEND is an after-school schedule and reminder system for your child
+myNanny is an integrated Alexa/desktop service that provides a central place for parents to track their children's responsibilities and safety. Alexa gently prompts the child to provide information about his/her day, records required homework, reminds them about their chores, and suggests eating a healthy snack! Parents can check to see if their child made it home, assign chores, and send notes to their child through Alexa on their computers or mobile device.
 
-after-school welcome / monitor
-home chore reminder
-allowance/reward tracker
-healthy snack suggester
+### myNanny Keeps Kids Safe
 
-parental notifications
+myNanny welcomes kids home after school, and sends parents a text confirming their safe arrival. If they don’t check in by the time set in their schedule online, parents receive a text notification.  
 
-child analytics
-emergency support
+### myNanny Makes Chores Fun
 
-Create and keep track of a list of chores by person
+Let myNanny do the nagging for you! Alexa technology makes chore reminders easy. Kids receive a list of their responsibilities when they get home, and they confirm with Alexa when they have finished, updating the Dashboard so parents can review their progress.
 
-Keep track of completed/unfinished tasks
-Track rewards / allowance, dependent on tasks (Integrate payment)
-Passive child presence monitoring
-Emergency support
-Text reminders to child to perform duties (Twilio?)
-Calorie management
-Sending child memos
-Homework reminders and help
+### myNanny Helps Organize the Household
 
-### Problem
-Parents are working a record number of hours, and our nation's children are suffering for it. FRIEND gives those neglected children a warm welcome home, a reminder to have a healthy snack, and to help them with their homework.
-
-### Solution
-FRIEND is an integrated Alexa/desktop service that provides a central place for parents to track their children's responsibilities and safety. Alexa gently prompts the child to provide information about his/her day, records required homework, reminds them about their chores, and suggests eating a healthy snack! Parents can check to see if their child made it home, assign chores, and send notes to their child through Alexa on their computers or mobile device.
+myNanny’s simple online interface gives parents a daily summary of their kids’ schedule and activities so that they can see their household at a glance. It’s a breeze to add chores and change schedules.  
 
 ### Quote from the Founder
-"The future of parenting is now with a FRIEND in every home"
+"The future of parenting is now with myNanny in every home."
 
 ### How to Get Started
-Designed for Amazon Alexa users, concerned parents may install and use this service .....
-
-### Customer Quote
-"I work 100 hours a week and don't have time to spend with my little Johnny at home. With FRIEND, I'm able to make sure that he's doing his homework and chores while I work. I'm now able to spend more quality time actually connecting with my son in the few hours I see him every week. Thanks FRIEND!" - Maria Avergüenza
-
-### Closing and Call to Action
-Buy one now!
+myNanny is designed for Amazon Alexa users. See the Getting Started page at my-nanny.org for details on how to set up your Alexa or Echo to work with myNanny.
