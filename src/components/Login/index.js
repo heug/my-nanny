@@ -15,13 +15,6 @@ class Login extends React.Component {
     };
   }
 
-  // handleInputChange(e) {
-  //   console.log(e.target);
-  //   const inputChange = {};
-  //   inputChange[e.target.name] = e.target.value;
-  //   this.setState(inputChange);
-  // }
-
   loginRedirect() {
     console.log('in login redirect');
     $.ajax({
@@ -33,17 +26,6 @@ class Login extends React.Component {
     });
   }
 
-  // checkAuth(e) {
-  //   console.log('in check auth');
-  //   $.ajax({
-  //     url: this.state.urlPrefix + '/test',
-  //     type: 'GET',
-  //     complete: function(data) {
-  //       console.log('Status is:', JSON.stringify(data));
-  //     }
-  //   });
-  // }
-
   render() {
     return (
       <div>
@@ -52,8 +34,6 @@ class Login extends React.Component {
       </div>
     );
   } 
-
 }
 
 export default Login;
-

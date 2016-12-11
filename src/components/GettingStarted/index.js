@@ -1,6 +1,6 @@
 import React from 'react';
 import './gettingStarted.css';
-
+import navbarInstance from '../LandingNav/index';
 
 class GettingStarted extends React.Component {
 
@@ -14,7 +14,7 @@ class GettingStarted extends React.Component {
   render() {
     return (
     <div className='gettingStarted'>
-      
+      {navbarInstance}
       <div className='row' id='gettingStartedRow'>
         <div className='col-md-12'>
           <img src='https://goo.gl/i00v4C' />
@@ -147,36 +147,4 @@ class GettingStarted extends React.Component {
 
 }
 
-
 export default GettingStarted;
-
-
-
-
-// {<div className='row'>
-
-//         <div className='col-md-12'>
-//           <div className='col-md-12'>
-//             <div className='col-md-6'>
-//               <h2>Setting Up Chores</h2>
-//               <ul className='table-of-content'>
-//                 <li><a className='link' href='#registerAccount'>Register Account</a></li>
-//                 <li><a className='link' href='#registerChild'>Register a Child</a></li>
-//                 <li><a className='link' href='#registerChore'>Register a Chore to a Child</a></li>
-//               </ul>
-//             </div>
-        
-//             <div className='col-md-6'>
-//               <h2>Voice Commands</h2>
-//               <ul className='table-of-content'>
-//                 <li><a className='link' href='#greating'>Say Hello</a></li>
-//                 <li><a className='link' href='#getChores'>Ask Alexa for Chores</a></li>
-//                 <li><a className='link' href='#getChoreDetails'>Ask Alexa for Details on Chores</a></li>
-//                 <li><a className='link' href='#choreComplete'>Tell Alexa You've Completed a Chore</a></li>
-//                 <li><a className='link' href='#choreSms'>Send Chores as SMS</a></li>
-//               </ul>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-// }
