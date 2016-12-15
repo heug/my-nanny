@@ -78,7 +78,7 @@ export const Landing = () => (
                 <h2>Organization.<br/></h2>
                 myNanny’s simple online interface gives you a daily summary of your kids’ 
                 schedule and activities so that you can see your household at a glance.  
-                And it’s a breeze to add chores and change schedules a breeze.  
+                And it’s a breeze to add chores and change schedules.  
               </div>
             </Col>
             <Col xs={2} />
