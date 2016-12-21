@@ -138,12 +138,31 @@ export const getAccountShallow = (token, date) => {
     return fetch(url('getAccount') + token)
     .then((res) => {
       if (res.status >= 400) {
-        throw new Error('Bad res from server');
+        throw new Error('Error getting account');
       }
       return res.json();
     })
     .then((account) => {
       dispatch(receiveAccount(account));
+    })
+    .catch((error) => {
+      console.error('You done messed up:', error);
+    });
+  };
+};
+
+export const getChildren = (token, date) => {
+  return function(dispatch) {
+    dispatch(requestChildren(token));
+    return fetch(url('getChildren') + token)
+    .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Error getting children');
+      }
+      return res.json();
+    })
+    .then((list) => {
+      dispatch(receiveChildren(list));
     })
     .catch((error) => {
       console.error('You done messed up:', error);
