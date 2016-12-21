@@ -61,7 +61,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h1>{this.props.account.username + '\'s Dashboard'}</h1>
+        <h1>{this.props.account.username ? this.props.account.username + '\'s Dashboard' : ''}</h1>
         <br/>
         <hr/>
         <br/>

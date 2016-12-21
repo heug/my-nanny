@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch';
 import Promise from 'bluebird';
 
+const apiEndpoint = 'https://localhost:1337/api/';
+
 var date = new Date();
 var day = date.getDate();
 var month = date.getMonth();
@@ -13,18 +15,18 @@ const url = (endpoint, id, startDate, endDate, page) => {
   page = page || 1;
 
   if (endpoint === 'getAccount') {
-    return 'https://api.my-nanny.org/api/account?access_token=';
+    return apiEndpoint + 'account?access_token=';
   } else if (endpoint === 'getChores') {
-    return 'https://api.my-nanny.org/api/children/' + id + '/chores?' + 
+    return apiEndpoint + 'children/' + id + '/chores?' + 
     'start_date=' + startDate + '&end_date=' + endDate + '&page=' + 
     page + '&access_token=';
   } else if (endpoint === 'getChildren') {
-    return 'https://api.my-nanny.org/api/children?access_token=';
+    return apiEndpoint + 'children?access_token=';
   } else if (endpoint === 'getSchedule') {
-    return 'https://api.my-nanny.org/api/children/' + id +
+    return apiEndpoint + 'children/' + id +
       '/schedule?access_token=';
   } else if (endpoint === 'addChild') {
-    return 'https://api.my-nanny.org/api/children?access_token=';
+    return apiEndpoint + 'children?access_token=';
   }
 };
 
@@ -127,6 +129,25 @@ export const updateAccountInStore = (username, phone, timezone, email) => {
   };
   return function(dispatch) {
     dispatch(receiveAccount(newAccountData));
+  };
+};
+
+export const getAccountShallow = (token, date) => {
+  return function(dispatch) {
+    dispatch(requestAccount(token));
+    return fetch(url('getAccount') + token)
+    .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Bad res from server');
+      }
+      return res.json();
+    })
+    .then((account) => {
+      dispatch(receiveAccount(account));
+    })
+    .catch((error) => {
+      console.error('You done messed up:', error);
+    });
   };
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
-import { getAccount } from '../../actions/actions';
+import { getAccount, getAccountShallow } from '../../actions/actions';
 import Dashboard from '../../containers/dashboard';
 
 import './home.css';
@@ -29,7 +29,8 @@ class Home extends React.Component {
     this.setState({ amazonToken: amzToken });
     localStorage.setItem('amazon-token', amzToken);
 
-    this.props.getAccount(amzToken, fullDate);
+    // this.props.getAccount(amzToken, fullDate);
+    this.props.getAccountShallow(amzToken, fullDate);
 
   }
 
@@ -56,7 +57,7 @@ const mapStateToProps = function(state) {
 };
 
 const mapDispatchToProps = function(dispatch) {
-  return bindActionCreators({ getAccount: getAccount }, dispatch);
+  return bindActionCreators({ getAccount: getAccount, getAccountShallow: getAccountShallow }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
