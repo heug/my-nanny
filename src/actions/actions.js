@@ -120,6 +120,18 @@ export const toggleShowChild = (id) => {
   };
 };
 
+const getChildDetails = (list) => {
+  let childIds = [];
+  list.children.forEach((child) => {
+    childIds.push(child.id);
+  });
+  return dispatch => Promise.all([
+    dispatch(receiveChildren(list)),
+    dispatch(requestSchedule()),
+    dispatch(requestChores(fullDate))
+  ]);
+};
+
 export const updateAccountInStore = (username, phone, timezone, email) => {
   const newAccountData = {
     username: username,
@@ -132,7 +144,7 @@ export const updateAccountInStore = (username, phone, timezone, email) => {
   };
 };
 
-export const getAccountShallow = (token, date) => {
+export const getAccountShallow = (token) => {
   return function(dispatch) {
     dispatch(requestAccount(token));
     return fetch(url('getAccount') + token)
@@ -151,7 +163,8 @@ export const getAccountShallow = (token, date) => {
   };
 };
 
-export const getChildren = (token, date) => {
+export const getChildren = (token) => {
+  let childIds = [];
   return function(dispatch) {
     dispatch(requestChildren(token));
     return fetch(url('getChildren') + token)
@@ -163,6 +176,45 @@ export const getChildren = (token, date) => {
     })
     .then((list) => {
       dispatch(receiveChildren(list));
+      dispatch(requestSchedule());
+      dispatch(requestChores(fullDate));
+      list.children.forEach((child) => {
+        childIds.push(child.id);
+      });
+      var store = [];
+      childIds.forEach((id) => {
+        store.push([
+          fetch(url('getChores', id, fullDate) + token)
+          .then(function(res) { 
+            res = res.json();
+            return res;
+          }),
+          fetch(url('getSchedule', id) + token)
+          .then(function(res) {
+            if (res.status === 500) {
+              return { schedule: {} };
+            }
+            return res.json();
+          })
+        ]);
+      });
+      return Promise.all(store.reduce((a,b) => { return a.concat(b); }, []));
+    })
+    .then((list) => {
+      console.log('here is list', list);
+      var chores = [];
+      var schedules = [];
+      for (var i = 0; i < list.length; i++) {
+        if (i % 2 === 0) {
+          chores.push(list[i]);
+        } else {
+          schedules.push(list[i]);
+        }
+      }
+      // console.log('chores', chores);
+      // console.log('schedules', schedules);
+      dispatch(receiveChores(childIds, chores));
+      dispatch(receiveSchedule(childIds, schedules));
     })
     .catch((error) => {
       console.error('You done messed up:', error);
