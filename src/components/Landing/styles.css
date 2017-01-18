@@ -1,50 +1,21 @@
-.siteHeader {
-	transform: none;
-	top: 0px;
-	width: 100%;
-	z-index: 100;
-	height: 50px;
+expose.row {
+	background-image: url('./assets/splash.jpg');
+	margin-bottom: 3em;
 }
 
-.logo {
-	display: inline;
-	padding-top: 12px;
-	padding-left: 10px;
-	height: 40px;
-	width: auto;
+.jumbotron {
+	margin: 0 auto;
+	margin-top: 4em;
 }
 
-.siteHeader-button {
-	padding: 0px 13px;
-	height: 30px;
+#landingJumbotron p {
+	font-size: 100%;
 }
 
-.btn-toolbar {
-	display: inline-block;
-	float: right;
-	padding: 10px;
+.LoginWithAmazon {
+	float: left;
 }
 
-.splash {
-	display: inline-block;
-	position: relative;
-	max-width: 100%;
-	height: auto;
-}
-
-.wrapper .desc {
-	position: absolute;
-	text-align: center;
-	left: 25%;
-	bottom: 45%;
-	width: 50%;
-	height: auto;
-	font-size: 40px;
-	color: white;
-	background-color: rgba(0, 153, 255, 0.4);
-	border-radius: 5px;
-}
-
-.wrapper a:hover {
-	opacity: 0.8;
+#amazonButton:hover {
+	cursor: pointer;
 }

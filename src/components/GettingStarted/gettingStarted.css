@@ -1,0 +1,73 @@
+.gettingStarted {
+  margin-top: 25px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.table-of-content {
+  list-style: none;
+  font-size: 20px;
+}
+
+.imageHeight {
+  margin: 1em;
+  height: 250px;
+  background-image: url('https://images-na.ssl-images-amazon.com/images/I/41-v1fozy0L.jpg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
+.card-row {
+  padding: 4px;
+}
+
+.card {
+  background-color: #eee;
+  border-bottom: 2px solid #aaa;
+  border-right: 2px solid #aaa;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.alexaCommandDesc {
+  text-align: justify;
+}
+
+.alexaCommand {
+  font-size: 16px;
+  color: darkblue;
+  font-weight: bold;
+  text-align: center;
+  background-color: #fff;
+  bottom: 10px;
+}
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-title {
+  padding-left: 2em;
+}
+
+.underline {
+  border-bottom: 2px solid #eee;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+img {
+  padding-top: 15px;
+}
+

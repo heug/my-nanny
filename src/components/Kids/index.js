@@ -1,10 +1,19 @@
 import React from 'react';
+import { getAccount, addChild } from '../../actions/actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Button, Form, FormControl, Row, Col } from 'react-bootstrap';
 import $ from 'jquery';
 import { Tabs, Tab } from 'react-bootstrap';
 import IndividualKid from '../IndividualKid/index';
 import config from '../../config';
 import './kids.css';
+
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth();
+var year = date.getFullYear();
+var fullDate = year + '-' + month + '-' + day;
 
 class Kids extends React.Component {
 
@@ -29,8 +38,9 @@ class Kids extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('amazonToken', this.state.amazonToken);
-    console.log('incomponent did mount');
+    this.props.getAccount(this.state.amazonToken, fullDate);
+
+    // TODO: Get this out of here
     $.ajax({
       url: this.state.urlPrefix + '/api/account?access_token=' + this.state.amazonToken,
       type: 'GET',
@@ -41,24 +51,19 @@ class Kids extends React.Component {
       this.setState({ email: data.email });
       this.setState({ children: data.children });
     });
+
   }
 
   addChild(e) {
-    const child = {
+    var child = {
       'child': {
         'name': this.state.newChildName,
         'phone': this.state.newChildPhone
       }
     };
-    $.ajax({
-      url: this.state.urlPrefix + '/api/children?access_token=' + this.state.amazonToken,
-      type: 'POST',
-      dataType: 'application/json',
-      data: child,
-      complete: function (data) {
-        console.log('Added child:' + JSON.stringify(data));
-      }
-    });
+    this.props.addChild(this.state.amazonToken, child);
+    this.setState({ adding: false });
+    location.reload();
   }
 
   handleInputChange(e) {
@@ -83,7 +88,7 @@ class Kids extends React.Component {
   render() {
     if (this.state.children.length === 0 || this.state.adding === true) {
       return (
-        <div className='kids'>
+        <div className='kids col-md-12'>
           <h2>Add a Child</h2>
             <Form>
               <FormControl type='text' name='newChildName' placeholder='Name' 
@@ -100,14 +105,14 @@ class Kids extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div className='col-md-12'>
           <h3>My Children</h3>
 
           <Tabs defaultActiveKey={0} id='uncontrolled-tab-example'>
             {
               this.state.children.map((child, index) => {
                 return (
-                  <Tab eventKey={index} title={child.name}>
+                  <Tab eventKey={index} title={child.name} key={child.id}>
                     <IndividualKid child={child} index={index} key={child.id} amazonToken={this.state.amazonToken}/>
                   </Tab>
                 );
@@ -123,9 +128,22 @@ class Kids extends React.Component {
   } 
 }
 
+const mapStateToProps = function(state) {
+  return {
+    account: state.account,
+    children: state.children,
+    chores: state.chores
+  };
+};
 
-export default Kids;
+
+Kids.contextTypes = {
+  store: React.PropTypes.object
+};
+
+var mapDispatchToProps = function(dispatch) {
+  return bindActionCreators({ getAccount: getAccount, addChild: addChild }, dispatch);
+};
 
 
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Kids);

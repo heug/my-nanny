@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
 import config from '../../config';
-
+import { Button } from 'react-bootstrap';
 
 
 class Login extends React.Component {
@@ -15,13 +15,6 @@ class Login extends React.Component {
     };
   }
 
-  // handleInputChange(e) {
-  //   console.log(e.target);
-  //   const inputChange = {};
-  //   inputChange[e.target.name] = e.target.value;
-  //   this.setState(inputChange);
-  // }
-
   loginRedirect() {
     console.log('in login redirect');
     $.ajax({
@@ -33,27 +26,14 @@ class Login extends React.Component {
     });
   }
 
-  // checkAuth(e) {
-  //   console.log('in check auth');
-  //   $.ajax({
-  //     url: this.state.urlPrefix + '/test',
-  //     type: 'GET',
-  //     complete: function(data) {
-  //       console.log('Status is:', JSON.stringify(data));
-  //     }
-  //   });
-  // }
-
   render() {
     return (
       <div>
         <h2>Log In</h2>
-        <button onClick={this.loginRedirect.bind(this)}>Login</button>
+        <Button onClick={this.loginRedirect.bind(this)}>Login</Button>
       </div>
     );
   } 
-
 }
 
 export default Login;
-

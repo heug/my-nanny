@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button } from 'react-bootstrap';
 
 
 
@@ -75,7 +75,7 @@ class Signup extends React.Component {
               </tr>
               <tr>
                 <div class='dropdown'>
-                  <button class='dropbtn'>Time Zone</button>
+                  <Button class='dropbtn'>Time Zone</Button>
                   <div class='dropdown-content'>
                     <a href='#'>US/Eastern</a>
                     <a href='#'>US/Central</a>
@@ -101,7 +101,7 @@ class Signup extends React.Component {
               </tr>
             </tbody>
           </table>
-          <button onClick={this.submitSignupForm.bind(this)}>Sign Up</button>
+          <Button onClick={this.submitSignupForm.bind(this)}>Sign Up</Button>
         </form>
       </div>
     );

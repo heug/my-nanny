@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router';
 import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Jumbotron, Button } from 'react-bootstrap';
+import './styles.css';
 
 
 class Navigation extends React.Component {
@@ -11,9 +12,10 @@ class Navigation extends React.Component {
     this.state = {
       links: {
         1: '/app/home',
-        2: '/app/account',
-        3: '/app/kids',
-        4: '/app/logout',
+        2: '/app/getting-started',
+        3: '/app/account',
+        4: '/app/kids',
+        5: '/app/logout',
       },
     };
 
@@ -26,7 +28,7 @@ class Navigation extends React.Component {
   }
 
   handleBrandLink(e) {
-    browserHistory.push('/app/home');
+    browserHistory.push('/');
   }
 
   handleLogout() {
@@ -47,14 +49,15 @@ class Navigation extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} onSelect={this.handleLink}>Home</NavItem>
-            <NavItem eventKey={3} onSelect={this.handleLink}>Kids</NavItem>
+            <NavItem eventKey={1} onSelect={this.handleLink}>Dashboard</NavItem>
+            <NavItem eventKey={2} onSelect={this.handleLink}>Getting Started</NavItem>
+            <NavItem eventKey={4} onSelect={this.handleLink}>Kids</NavItem>
           </Nav>
           <Nav pullRight>
             <NavDropdown title='Account' id='account-nav-dropdown'>
-              <MenuItem eventKey={2} onSelect={this.handleLink}>Profile</MenuItem>
+              <MenuItem eventKey={3} onSelect={this.handleLink}>Profile</MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey={4} onSelect={this.handleLogout}>Log Out</MenuItem>
+              <MenuItem eventKey={5} onSelect={this.handleLogout}>Log Out</MenuItem>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

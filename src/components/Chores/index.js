@@ -54,7 +54,7 @@ class Chores extends React.Component {
 
   updateChore(e) {
     // console.log('in update chore', e);
-    const chore = createChore();
+    const chore = this.createChore();
     // console.log('state in updateChore', this.state);
     // console.log('chore', chore);
     $.ajax({
@@ -94,33 +94,51 @@ class Chores extends React.Component {
 
   render() {
     return (
-      <div>
-      {(this.state.show === true &&
-        <div>
-          {(this.state.editable === false &&
-            <div>
-              {this.state.title}
-              {this.state.details}
-              {this.state.date}
-              <Button onClick={this.makeEditable.bind(this)}>Edit</Button> 
-              <Button onClick={this.deleteChore.bind(this)}>Delete</Button> 
-              <Button onClick={this.markCompleted.bind(this)}>Mark Completed</Button> 
-            </div> 
-          )}
-
-          {(this.state.editable === true && 
-            <div>
-              <input name='title' value={this.state.title} 
-                onChange={this.handleInputChange.bind(this)}/>
-              <input name='details' value={this.state.details}
-                onChange={this.handleInputChange.bind(this)}/>
-              <input type='date' name='date' value={this.state.date}
-                onChange={this.handleInputChange.bind(this)}/>
-              <Button onClick={this.updateChore.bind(this)}>Update</Button> 
-            </div>
-          )}
-        </div>
-      )}
+      <div className='child-row-wrapper'>
+        {(this.state.show === true &&
+          this.state.editable === false && 
+          <div className='row child-row'>
+              <p className='col-md-2 child-row-cell'>{this.state.date}</p>
+              <p className='col-md-3 child-row-cell'>{this.state.title}</p>
+              <p className='col-md-5 child-row-cell'>{this.state.details}</p>
+              <div className='col-md-2 child-row-cell'>
+                <div className='row'>
+                <span className='col-md-1 child-row-edit glyphicon glyphicon-ok'
+                        onClick={this.markCompleted.bind(this)}></span>
+                  <span className='col-md-1 child-row-edit glyphicon glyphicon-edit'
+                        onClick={this.makeEditable.bind(this)}></span>
+                  <span className='col-md-1 child-row-remove glyphicon glyphicon-remove'
+                        onClick={this.deleteChore.bind(this)}></span>
+                </div>
+              </div>
+          </div>
+        )}
+        {(this.state.show === true &&
+          this.state.editable === true && 
+          <div className='row child-row'>
+              <input className='col-md-2'
+                     type='date'
+                     name='date'
+                     value={this.state.date}
+                     onChange={this.handleInputChange.bind(this)} />
+              <input className='col-md-3 child-row-cell'
+                     type='text'
+                     name='title'
+                     value={this.state.title}
+                     onChange={this.handleInputChange.bind(this)} />
+              <input className='col-md-5 child-row-cell'
+                     type='text'
+                     name='details'
+                     value={this.state.details}
+                     onChange={this.handleInputChange.bind(this)} />
+              <div className='col-md-2 child-row-cell'>
+                <div className='row'>
+                  <span className='col-md-1 child-row-edit glyphicon glyphicon-ok'
+                        onClick={this.updateChore.bind(this)}></span>
+                </div>
+              </div>
+          </div>
+        )}
       </div>
     );  
   } 

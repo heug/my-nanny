@@ -1,0 +1,20 @@
+.navRight {
+  padding-top: .6em;
+}
+
+#landingJumbotron {
+  background: rgba(255, 255, 255, 0.7) !important; 
+  font-size: 200%;
+}
+
+#LoginWithAmazon {
+  margin: 0 50%;
+}
+
+#amazonButton {
+  padding-top: 0; 
+}
+
+#amazonButton:hover {
+  cursor: pointer;
+}

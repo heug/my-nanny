@@ -1,0 +1,25 @@
+ul {
+	list-style-type: none;
+}
+
+ul li {
+	padding-bottom: 10px;
+}
+
+.avatar {
+	border-radius: 50%;
+	width: 50px;
+	height: auto;
+}
+
+.status {
+	padding-left: 20px;
+}
+
+.isHome {
+	color: green;
+}
+
+.isNotHome {
+	color: red;
+}
