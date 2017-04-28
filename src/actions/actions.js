@@ -355,7 +355,7 @@ export const addChild = (token, child) => {
             if (res.status === 500) {
               return { schedule: {} };
             }
-            return res.text();
+            return res.json();
           })
         );
       });
