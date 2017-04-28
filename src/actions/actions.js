@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import Promise from 'bluebird';
 
-const apiEndpoint = 'https://localhost:1337/api/';
+const apiEndpoint = 'https://api.my-nanny.org/api/';
 
 var date = new Date();
 var day = date.getDate();
@@ -355,7 +355,7 @@ export const addChild = (token, child) => {
             if (res.status === 500) {
               return { schedule: {} };
             }
-            return res.json();
+            return res.text();
           })
         );
       });
